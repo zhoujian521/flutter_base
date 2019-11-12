@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatefulWidget {
+import 'package:flutter_base/views/home/home.dart';
+import 'package:flutter_base/views/second/second.dart';
+import 'package:flutter_base/views/third/third.dart';
+import 'package:flutter_base/views/users/users.dart';
+
+class Root extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _HomeState();
+    return _RootState();
   }
 }
 
-class _HomeState extends State<Home> {
+class _RootState extends State<Root> {
   int _currentIndex = 0;
   final data = [
     {'title': '首页', 'icon': Icon(Icons.language)},
@@ -16,10 +21,15 @@ class _HomeState extends State<Home> {
     {'title': '我的', 'icon': Icon(Icons.account_circle)}
   ];
   List<BottomNavigationBarItem> _items = [];
+  List<Widget> _list = List();
 
   @override
   void initState() {
     super.initState();
+    _list..add(Home())..add(Second())..add(Third())..add(Mine());
+
+    print(_list);
+    print(<Widget>[Home(), Second(), Third(), Mine()]);
     for (var item in data) {
       _items.add(
         BottomNavigationBarItem(
@@ -41,11 +51,11 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('Home'),
-      ),
       body: new Center(
-        child: new Text('Home'),
+        child: IndexedStack(
+          index: _currentIndex,
+          children: _list,
+        ),
       ),
       bottomNavigationBar: new BottomNavigationBar(
         items: _items,

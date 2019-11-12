@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatefulWidget {
+class Third extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _HomeState();
+    return _ThirdState();
   }
 }
 
-class _HomeState extends State<Home> {
+class _ThirdState extends State<Third> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(
-        title: new Text('首页'),
+        title: new Text('第三个页面'),
       ),
       body: new Center(
-        child: new Text('首页'),
+        child: new Text('第三个页面'),
       ),
     );
   }

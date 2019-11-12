@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
       title: 'base',
       home: new Scaffold(
         body: new Center(
-          child: new Home(),
+          child: new Root(),
         ),
       ),
     );
