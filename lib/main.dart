@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_base/views/root.dart';
+import 'package:flutter_base/views/users/collection.dart';
 
 import 'package:flutter_base/themes/colors.dart' as ZJColors;
 import 'package:flutter_base/themes/fonts.dart' as ZJFonts;
@@ -17,12 +19,17 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final Map<String, WidgetBuilder> routes = {
+    '/collection': (context) => Collection()
+  };
 
   @override
   Widget build(BuildContext context) {
     print('main.dart ==> build()');
     return new MaterialApp(
       title: 'base',
+      initialRoute: "/",
+      routes: routes,
       theme: new ThemeData(
         primaryColor: Color(ZJColors.primaryColor),
         backgroundColor: Color(ZJColors.backgroundColor),
@@ -33,10 +40,8 @@ class _MyAppState extends State<MyApp> {
             fontSize: ZJFonts.body1,
           ),
         ),
-        iconTheme: IconThemeData(
-          color: Color(ZJColors.primaryColor),
-          size: 35.0
-        ),
+        iconTheme:
+            IconThemeData(color: Color(ZJColors.primaryColor), size: 35.0),
       ),
       home: new Scaffold(
         body: new Center(
