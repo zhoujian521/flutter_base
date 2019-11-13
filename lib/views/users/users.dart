@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base/views/drawer/drawer.dart' as ZJDrawer;
 
 class Mine extends StatefulWidget {
   @override
@@ -11,11 +12,8 @@ class _MineState extends State<Mine> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: AppBar(
-        title: new Text('我的'),
-      ),
       body: new Center(
-        child: new Text('我的'),
+        child: ZJDrawer.Drawer(),
       ),
     );
   }
