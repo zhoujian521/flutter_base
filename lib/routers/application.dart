@@ -1,3 +1,5 @@
+import 'package:fluro/fluro.dart';
+
 enum ENV {
   PRODUCTION,
   DEV,
@@ -5,6 +7,7 @@ enum ENV {
 
 class Application {
   static ENV env = ENV.DEV;
+  static Router router;
 
   /// 所有获取配置的唯一入口
   Map<String, String> get config {

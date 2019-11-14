@@ -4,7 +4,7 @@ import 'package:flutter_base/model/article.dart';
 class ContentScreen extends StatelessWidget {
   final Article article;
 
-  const ContentScreen({Key key, this.article}) : super(key: key);
+  ContentScreen({Key key, this.article}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -3,6 +3,11 @@ import 'package:flutter_base/model/article.dart';
 import 'package:flutter_base/views/second/content.dart';
 
 class Second extends StatefulWidget {
+  final String name;
+  final String email;
+
+  const Second({Key key, this.name, this.email}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     return _SecondState();

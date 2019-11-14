@@ -1,6 +1,9 @@
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_base/views/users/collection.dart';
 import 'package:flutter_base/model/user.dart';
+import 'package:flutter_base/routers/application.dart';
+import 'package:flutter_base/routers/routers.dart';
 
 class Drawer extends StatefulWidget {
   @override
@@ -13,14 +16,18 @@ class _DrawerState extends State<Drawer> {
   final TextStyle textStyle =
       TextStyle(fontSize: 16.0, fontWeight: FontWeight.w300);
 
+  void onTapSearch(BuildContext context) {
+    Application.router.navigateTo(context, Routes.search, transition: TransitionType.native);
+  }
+
   void onTapCollection(BuildContext context) {
     // push
     // Navigator.push(context, MaterialPageRoute(builder: (context) {
     //   return Collection();
     // }));
-
     // pushNamed
-    Navigator.pushNamed(context, '/collection', arguments: User(name:"zhoujain", email:"403887191@qq.com"));
+    Navigator.pushNamed(context, '/collection',
+        arguments: User(name: "zhoujain", email: "403887191@qq.com"));
   }
 
   @override
@@ -44,7 +51,7 @@ class _DrawerState extends State<Drawer> {
               leading: Icon(Icons.search, size: 27.0),
               title: new Text('全网搜', style: textStyle),
               onTap: () {
-                print('全网搜');
+                onTapSearch(context);
               },
             ),
             new Divider(height: 1.0),

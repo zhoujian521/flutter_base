@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluro/fluro.dart';
 
 import 'package:flutter_base/views/root.dart';
 import 'package:flutter_base/views/users/collection.dart';
@@ -6,12 +7,20 @@ import 'package:flutter_base/views/users/collection.dart';
 import 'package:flutter_base/themes/colors.dart' as ZJColors;
 import 'package:flutter_base/themes/fonts.dart' as ZJFonts;
 
+import 'package:flutter_base/routers/application.dart';
+import 'package:flutter_base/routers/routers.dart';
+
 void main() async {
-  print('main.dart ==> main()');
   runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
+  MyApp() {
+    final router = new Router();
+    Routes.configureRoutes(router);
+    Application.router = router;
+  }
+
   @override
   State<StatefulWidget> createState() {
     return _MyAppState();
@@ -25,7 +34,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    print('main.dart ==> build()');
     return new MaterialApp(
       title: 'base',
       initialRoute: "/",
