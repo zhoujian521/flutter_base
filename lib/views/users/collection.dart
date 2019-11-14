@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base/components/empty.dart';
 import 'package:flutter_base/model/user.dart';
 
 class Collection extends StatefulWidget {
@@ -17,14 +18,20 @@ class _CollectionState extends State<Collection> {
       appBar: AppBar(
         title: new Text('我的收藏'),
       ),
-      body: new Center(
-        child: new RaisedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: new Text("${user.name ?? ''} ${user.email ?? ''}"),
-        ),
+      body: new ListView(
+        children: <Widget>[
+          new Empty(content: '暂无收藏，赶紧去收藏一个吧!'),
+        ],
       ),
     );
   }
 }
+
+// new Center(
+//         child: new RaisedButton(
+//           onPressed: () {
+//             Navigator.pop(context);
+//           },
+//           child: new Text("${user.name ?? ''} ${user.email ?? ''}"),
+//         ),
+//       ),

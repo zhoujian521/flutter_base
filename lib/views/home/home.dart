@@ -1,12 +1,20 @@
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base/views/users/users.dart';
 import 'package:flutter_base/components/my_app_bar.dart';
+import 'package:flutter_base/routers/application.dart';
+import 'package:flutter_base/routers/routers.dart';
 
 class Home extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _HomeState();
   }
+}
+
+void onPressedSearch(BuildContext context) {
+  Application.router
+      .navigateTo(context, Routes.search, transition: TransitionType.native);
 }
 
 class _HomeState extends State<Home> {
@@ -23,6 +31,12 @@ class _HomeState extends State<Home> {
           ),
         ),
         title: new Text('首页'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () => onPressedSearch(context),
+          )
+        ],
       ),
       drawer: Drawer(
         child: new Mine(),

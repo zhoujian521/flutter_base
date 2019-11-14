@@ -16,6 +16,10 @@ class _DrawerState extends State<Drawer> {
   final TextStyle textStyle =
       TextStyle(fontSize: 16.0, fontWeight: FontWeight.w300);
 
+  void onTapError(BuildContext context) {
+    Application.router.navigateTo(context, Routes.error404, transition: TransitionType.native);
+  }
+
   void onTapSearch(BuildContext context) {
     Application.router.navigateTo(context, Routes.search, transition: TransitionType.native);
   }
@@ -67,7 +71,7 @@ class _DrawerState extends State<Drawer> {
               leading: Icon(Icons.email, size: 27.0),
               title: new Text('反馈/建议', style: textStyle),
               onTap: () {
-                print('反馈/建议');
+                onTapError(context);
               },
             ),
             new Divider(height: 1.0),
