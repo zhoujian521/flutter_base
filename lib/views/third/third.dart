@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base/blocs/bloc_index.dart';
 
 class Third extends StatefulWidget {
   @override
@@ -8,14 +9,47 @@ class Third extends StatefulWidget {
 }
 
 class _ThirdState extends State<Third> {
+  ScrollController _controller = new ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    final DataBloc dataBloc = BlocProvider.of<DataBloc>(context);
+    dataBloc.onRefresh();
+    _controller.addListener(() {
+      if (_controller.position.pixels ==
+          _controller.position.maxScrollExtent) {
+            dataBloc.onLoadMore();
+          }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    final DataBloc dataBloc = BlocProvider.of<DataBloc>(context);
     return new Scaffold(
       appBar: AppBar(
         title: new Text('第三个页面'),
       ),
-      body: new Center(
-        child: new Text('第三个页面'),
+      body: new StreamBuilder(
+        stream: dataBloc.dataStream,
+        builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+          return new RefreshIndicator(
+            onRefresh: () {
+              return dataBloc.onRefresh();
+            },
+            child: new ListView.builder(
+              padding: const EdgeInsets.all(16.0),
+              itemCount: 100,
+              itemBuilder: (BuildContext context, int index) {
+                return new Center(
+                  child: new Text('$index'),
+                );
+              },
+              controller: _controller,
+            ),
+          );
+        },
       ),
     );
   }

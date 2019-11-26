@@ -4,6 +4,7 @@ import 'package:flutter_base/views/users/users.dart';
 import 'package:flutter_base/components/my_app_bar.dart';
 import 'package:flutter_base/routers/application.dart';
 import 'package:flutter_base/routers/routers.dart';
+import 'package:flutter_base/blocs/bloc_index.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -18,8 +19,11 @@ void onPressedSearch(BuildContext context) {
 }
 
 class _HomeState extends State<Home> {
+  int _counter = 0;
   @override
   Widget build(BuildContext context) {
+    final ApplicationBloc bloc = BlocProvider.of<ApplicationBloc>(context);
+
     return new Scaffold(
       appBar: MyAppBar(
         leading: Container(
@@ -42,7 +46,21 @@ class _HomeState extends State<Home> {
         child: new Mine(),
       ),
       body: new Center(
-        child: new Text('首页'),
+        child: new Column(
+          children: <Widget>[
+            FlatButton(
+              child: new Text('update'),
+              onPressed: () {
+                bloc.configSink.add(++_counter);
+              },
+            ),
+            StreamBuilder(
+                stream: bloc.configStream,
+                builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+                  return Text('$snapshot');
+                }),
+          ],
+        ),
       ),
     );
   }

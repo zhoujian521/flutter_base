@@ -4,6 +4,7 @@ import 'package:flutter_base/views/home/home.dart';
 import 'package:flutter_base/views/second/second.dart';
 import 'package:flutter_base/views/third/third.dart';
 import 'package:flutter_base/views/users/users.dart';
+import 'package:flutter_base/blocs/bloc_index.dart';
 
 class Root extends StatefulWidget {
   @override
@@ -26,7 +27,14 @@ class _RootState extends State<Root> {
   @override
   void initState() {
     super.initState();
-    _list..add(Home())..add(Second())..add(Third())..add(Mine());
+    _list
+      ..add(Home())
+      ..add(Second())
+      ..add(new BlocProvider(
+        bloc: new DataBloc(),
+        child: new Third(),
+      ))
+      ..add(Mine());
 
     print(_list);
     print(<Widget>[Home(), Second(), Third(), Mine()]);

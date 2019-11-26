@@ -11,12 +11,15 @@ import 'themes/metrics.dart';
 import 'package:flutter_base/routers/application.dart';
 import 'package:flutter_base/routers/routers.dart';
 
-void main() async {
-  runApp(MyApp());
-}
+import 'blocs/bloc_index.dart';
 
-class MyApp extends StatefulWidget {
-  MyApp() {
+void main() => runApp(BlocProvider(
+      bloc: ApplicationBloc(),
+      child: MainApp(),
+    ));
+
+class MainApp extends StatefulWidget {
+  MainApp() {
     final router = new Router();
     Routes.configureRoutes(router);
     Application.router = router;
@@ -24,14 +27,27 @@ class MyApp extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return _MyAppState();
+    return _MainAppState();
   }
 }
 
-class _MyAppState extends State<MyApp> {
+class _MainAppState extends State<MainApp> {
   final Map<String, WidgetBuilder> routes = {
     '/collection': (context) => Collection()
   };
+
+  @override
+  void initState() {
+    super.initState();
+    _initListener();
+  }
+
+  void _initListener() {
+    final ApplicationBloc bloc = BlocProvider.of<ApplicationBloc>(context);
+    bloc.configStream.listen((params) {
+      print('~~~~~~~~~~~$params~~~~~~~~~');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,8 +66,8 @@ class _MyAppState extends State<MyApp> {
             fontSize: ZJFonts.body1,
           ),
         ),
-        iconTheme:
-            IconThemeData(color: Color(ZJColors.primaryColor), size: IconSize.large),
+        iconTheme: IconThemeData(
+            color: Color(ZJColors.primaryColor), size: IconSize.large),
       ),
       home: new Scaffold(
         body: new Center(
