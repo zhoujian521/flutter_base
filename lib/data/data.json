@@ -1,0 +1,49 @@
+{
+    "apkLink": "",
+    "audit": 1,
+    "author": "gs666",
+    "chapterId": 294,
+    "chapterName": "完整项目",
+    "collect": false,
+    "courseId": 13,
+    "desc": "一个模仿企鹅 FM 界面的Android 应用&mdash;喜马拉雅Kotlin。完全使用 Kotlin 开发。有声资源和播放器由喜马拉雅 SDK 提供。 主要功能： 1,在线播放专辑点播 2,在线播放国家/省/市广播电台 3,最近收听 4,搜索节目/专辑/广播（包括热搜词）",
+    "envelopePic": "https://wanandroid.com/blogimgs/2baa4b4b-acfe-473c-b534-9d672423e564.png",
+    "fresh": false,
+    "id": 10135,
+    "link": "https://www.wanandroid.com/blog/show/2703",
+    "niceDate": "2019-11-07",
+    "niceShareDate": "2019-11-07",
+    "origin": "",
+    "prefix": "",
+    "projectLink": "https://github.com/gs666/XimalayaKotlin",
+    "publishTime": 1573094591000,
+    "selfVisible": 0,
+    "shareDate": 1573094591000,
+    "shareUser": "",
+    "superChapterId": 294,
+    "superChapterName": "开源项目主Tab",
+    "tags": [
+        {
+            "name": "项目",
+            "url": "/project/list/1?cid=294"
+        }
+    ],
+    "title": "一个模仿企鹅 FM 界面的 Android 应用&mdash;喜马拉雅Kotlin。完全使用 Kotlin 开发。",
+    "type": 0,
+    "userId": -1,
+    "visible": 1,
+    "zan": 0
+}
+{
+    "data": {
+        "curPage": 1,
+        "datas": [],
+        "offset": 0,
+        "over": false,
+        "pageCount": 12,
+        "size": 15,
+        "total": 166
+    },
+    "errorCode": 0,
+    "errorMsg": ""
+}

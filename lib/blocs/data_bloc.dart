@@ -1,12 +1,16 @@
 import 'bloc_provider.dart';
 import 'package:rxdart/subjects.dart';
 import 'package:flutter_base/data/repository/data_repository.dart';
+import 'package:flutter_base/model/project.dart';
 
 class DataBloc implements BlocBase {
-  BehaviorSubject<String> _dataChannel = BehaviorSubject<String>();
+  BehaviorSubject<List<Project>> _dataChannel =
+      BehaviorSubject<List<Project>>();
 
-  Sink<String> get dataSink => _dataChannel.sink;
-  Stream<String> get dataStream => _dataChannel.stream;
+  Sink<List<Project>> get dataSink => _dataChannel.sink;
+  Stream<List<Project>> get dataStream => _dataChannel.stream;
+
+  List<Project> _array;
 
   @override
   void dispose() {
@@ -31,9 +35,15 @@ class DataBloc implements BlocBase {
     return getData();
   }
 
-  Future getProjectList() async {
-    // 参数
-    DataRepository.getProjectList();
-    // res处理
+  Future getProjectList() {
+    return DataRepository.getProjectList().then((list) {
+      if (_array == null) {
+        _array = new List();
+      } else {
+        _array.clear();
+      }
+      _array.addAll(list);
+      dataSink.add(_array);
+    });
   }
 }

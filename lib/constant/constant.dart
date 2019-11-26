@@ -1,3 +1,3 @@
 class Constant {
-  static const String PROJECT_LIST = "project/list";
+  static const int status_success = 0;
 }

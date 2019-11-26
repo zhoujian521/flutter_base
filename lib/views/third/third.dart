@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_base/blocs/bloc_index.dart';
+import 'package:flutter_base/model/project.dart';
 
 class Third extends StatefulWidget {
   @override
@@ -17,10 +20,9 @@ class _ThirdState extends State<Third> {
     final DataBloc dataBloc = BlocProvider.of<DataBloc>(context);
     dataBloc.onRefresh();
     _controller.addListener(() {
-      if (_controller.position.pixels ==
-          _controller.position.maxScrollExtent) {
-            dataBloc.onLoadMore();
-          }
+      if (_controller.position.pixels == _controller.position.maxScrollExtent) {
+        dataBloc.onLoadMore();
+      }
     });
   }
 
@@ -33,17 +35,18 @@ class _ThirdState extends State<Third> {
       ),
       body: new StreamBuilder(
         stream: dataBloc.dataStream,
-        builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+        builder: (BuildContext context, AsyncSnapshot<List<Project>> snapshot) {
           return new RefreshIndicator(
             onRefresh: () {
               return dataBloc.onRefresh();
             },
             child: new ListView.builder(
               padding: const EdgeInsets.all(16.0),
-              itemCount: 100,
+              itemCount: snapshot.data == null ? 0 : snapshot.data.length,
               itemBuilder: (BuildContext context, int index) {
+                Project model = snapshot.data[index];
                 return new Center(
-                  child: new Text('$index'),
+                  child: new Text(model.desc),
                 );
               },
               controller: _controller,
