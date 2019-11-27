@@ -1,8 +1,8 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_base/model/user.dart';
 import 'package:flutter_base/routers/application.dart';
 import 'package:flutter_base/routers/routers.dart';
+import 'package:flutter_base/data/model/user.dart';
 
 class Drawer extends StatefulWidget {
   @override

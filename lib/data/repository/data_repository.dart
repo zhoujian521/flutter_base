@@ -1,9 +1,9 @@
-import 'package:flutter_base/model/project.dart';
+import 'package:flutter_base/data/api/api.dart';
 import 'package:flutter_base/utils/net_utils.dart';
 import 'package:flutter_base/constant/config.dart';
-import 'package:flutter_base/data/api/api.dart';
-import 'package:flutter_base/model/base_resp.dart';
 import 'package:flutter_base/constant/constant.dart';
+import 'package:flutter_base/data/model/project.dart';
+import 'package:flutter_base/data/model/base_resp.dart';
 
 class DataRepository {
   static Future<List<Project>> getProjectList() async {

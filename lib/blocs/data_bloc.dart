@@ -1,7 +1,7 @@
 import 'bloc_provider.dart';
 import 'package:rxdart/subjects.dart';
 import 'package:flutter_base/data/repository/data_repository.dart';
-import 'package:flutter_base/model/project.dart';
+import 'package:flutter_base/data/model/project.dart';
 
 class DataBloc implements BlocBase {
   BehaviorSubject<List<Project>> _dataChannel =

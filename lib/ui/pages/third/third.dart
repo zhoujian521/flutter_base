@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base/blocs/bloc_index.dart';
-import 'package:flutter_base/model/project.dart';
 import 'package:flutter_base/ui/widgets/items/project_item.dart';
+import 'package:flutter_base/data/model/project.dart';
 
 class Third extends StatefulWidget {
   @override

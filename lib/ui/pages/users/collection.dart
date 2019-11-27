@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base/model/user.dart';
 import 'package:flutter_base/ui/widgets/empty.dart';
+import 'package:flutter_base/data/model/user.dart';
 
 class Collection extends StatefulWidget {
   @override
