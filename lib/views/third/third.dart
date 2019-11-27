@@ -1,8 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_base/blocs/bloc_index.dart';
 import 'package:flutter_base/model/project.dart';
+import 'package:flutter_base/widgets/items/project_item.dart';
 
 class Third extends StatefulWidget {
   @override
@@ -41,12 +40,11 @@ class _ThirdState extends State<Third> {
               return dataBloc.onRefresh();
             },
             child: new ListView.builder(
-              padding: const EdgeInsets.all(16.0),
               itemCount: snapshot.data == null ? 0 : snapshot.data.length,
               itemBuilder: (BuildContext context, int index) {
                 Project model = snapshot.data[index];
                 return new Center(
-                  child: new Text(model.desc),
+                  child: ProjectItem(model: model),
                 );
               },
               controller: _controller,
