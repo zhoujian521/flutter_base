@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base/components/empty.dart';
 import 'package:flutter_base/model/user.dart';
+import 'package:flutter_base/ui/widgets/empty.dart';
 
 class Collection extends StatefulWidget {
   @override
@@ -27,11 +27,3 @@ class _CollectionState extends State<Collection> {
   }
 }
 
-// new Center(
-//         child: new RaisedButton(
-//           onPressed: () {
-//             Navigator.pop(context);
-//           },
-//           child: new Text("${user.name ?? ''} ${user.email ?? ''}"),
-//         ),
-//       ),

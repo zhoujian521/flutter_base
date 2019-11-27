@@ -1,4 +1,4 @@
-class IconSize {
+class AppIconSize {
   static const tiny = 15.0;
   static const small = 20.0;
   static const medium = 30.0;
@@ -6,7 +6,7 @@ class IconSize {
   static const xl = 50.0;
 }
 
-class ImageSize {
+class AppImageSize {
   static const small = 20.0;
   static const medium = 40.0;
   static const large = 60.0;

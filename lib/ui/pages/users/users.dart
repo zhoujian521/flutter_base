@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base/views/drawer/drawer.dart' as ZJDrawer;
+import 'package:flutter_base/ui/pages/drawer/drawer.dart' as ZJDrawer;
 
 class Mine extends StatefulWidget {
   @override

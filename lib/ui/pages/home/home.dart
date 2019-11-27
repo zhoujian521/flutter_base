@@ -1,10 +1,12 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_base/views/users/users.dart';
-import 'package:flutter_base/components/my_app_bar.dart';
+
 import 'package:flutter_base/routers/application.dart';
 import 'package:flutter_base/routers/routers.dart';
 import 'package:flutter_base/blocs/bloc_index.dart';
+
+import 'package:flutter_base/ui/pages/users/users.dart';
+import 'package:flutter_base/ui/widgets/my_app_bar.dart';
 
 class Home extends StatefulWidget {
   @override

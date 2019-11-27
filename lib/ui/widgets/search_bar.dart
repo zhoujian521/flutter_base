@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base/themes/metrics.dart';
+import 'package:flutter_base/themes/index.dart';
 
 class SearchBar extends StatefulWidget {
   @override
@@ -22,7 +22,7 @@ class _SearchBarState extends State<SearchBar> {
       child: new Card(
         child: new Row(
           children: <Widget>[
-            new Icon(Icons.search, color: Colors.grey, size: IconSize.small),
+            new Icon(Icons.search, color: Colors.grey, size: AppIconSize.small),
             new Expanded(
               child: Container(
                 child: TextField(
@@ -40,9 +40,8 @@ class _SearchBarState extends State<SearchBar> {
             new IconButton(
               icon: Icon(Icons.cancel),
               color: Colors.grey,
-              iconSize: IconSize.small,
+              iconSize: AppIconSize.small,
               onPressed: () {
-                print('xxxxxxxxx');
                 controller.clear();
               },
             )

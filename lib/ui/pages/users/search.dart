@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base/themes/metrics.dart';
-import 'package:flutter_base/components/search_bar.dart';
+import 'package:flutter_base/ui/widgets/search_bar.dart';
 
 class Search extends StatefulWidget {
   @override

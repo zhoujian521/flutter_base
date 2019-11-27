@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
-import 'package:flutter_base/views/users/search.dart';
-import 'package:flutter_base/views/404.dart';
+
+import 'package:flutter_base/ui/pages/404.dart';
+import 'package:flutter_base/ui/pages/users/search.dart';
 
 var searchHandler = new Handler(
   handlerFunc: (BuildContext context, Map<String, List<String>> params) {

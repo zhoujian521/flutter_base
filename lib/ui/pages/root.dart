@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_base/views/home/home.dart';
-import 'package:flutter_base/views/second/second.dart';
-import 'package:flutter_base/views/third/third.dart';
-import 'package:flutter_base/views/users/users.dart';
 import 'package:flutter_base/blocs/bloc_index.dart';
+
+import 'package:flutter_base/ui/pages/home/home.dart';
+import 'package:flutter_base/ui/pages/second/second.dart';
+import 'package:flutter_base/ui/pages/third/third.dart';
+import 'package:flutter_base/ui/pages/users/users.dart';
 
 class Root extends StatefulWidget {
   @override

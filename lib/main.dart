@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
-
-import 'package:flutter_base/views/root.dart';
-import 'package:flutter_base/views/users/collection.dart';
-
-import 'package:flutter_base/themes/colors.dart' as ZJColors;
-import 'package:flutter_base/themes/fonts.dart' as ZJFonts;
-import 'themes/metrics.dart';
+import 'package:flutter_base/themes/index.dart' as prefix0;
+import 'blocs/bloc_index.dart';
 
 import 'package:flutter_base/routers/application.dart';
 import 'package:flutter_base/routers/routers.dart';
 
-import 'blocs/bloc_index.dart';
+import 'package:flutter_base/ui/pages/root.dart';
+import 'package:flutter_base/ui/pages/users/collection.dart';
+
 
 void main() => runApp(BlocProvider(
       bloc: ApplicationBloc(),
@@ -56,18 +53,16 @@ class _MainAppState extends State<MainApp> {
       initialRoute: "/",
       routes: routes,
       theme: new ThemeData(
-        primaryColor: Color(ZJColors.primaryColor),
-        // backgroundColor: Color(ZJColors.backgroundColor),
-        backgroundColor: Colors.cyan,
-        accentColor: Color(ZJColors.accentColor),
+        primaryColor: prefix0.AppColours.app_primary,
+        backgroundColor: prefix0.AppColours.app_background,
         textTheme: TextTheme(
           body1: TextStyle(
-            color: Color(ZJColors.accentColor),
-            fontSize: ZJFonts.body1,
-          ),
+              // color: Color(ZJColors.accentColor),
+              // fontSize: ZJFonts.body1,
+              ),
         ),
-        iconTheme: IconThemeData(
-            color: Color(ZJColors.primaryColor), size: IconSize.large),
+        // iconTheme: IconThemeData(
+        //     color: Color(ZJColors.primaryColor), size: IconSize.large),
       ),
       home: new Scaffold(
         body: new Center(
