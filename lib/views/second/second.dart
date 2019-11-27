@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base/model/article.dart';
-import 'package:flutter_base/views/second/content.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:flutter_easyrefresh/phoenix_header.dart';
+import 'package:flutter_easyrefresh/material_footer.dart';
 
 class Second extends StatefulWidget {
   final String name;
@@ -15,24 +16,13 @@ class Second extends StatefulWidget {
 }
 
 class _SecondState extends State<Second> {
-  final List<Article> articles = new List.generate(
-    10,
-    (i) => new Article(
-      title: 'Article $i',
-      content: 'Article $i: The quick brown fox jumps over the lazy dog.',
-    ),
-  );
+  int _count = 20;
+  EasyRefreshController _controller;
 
-  void onTapItem(BuildContext context, int index) async {
-    String res = await Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => new ContentScreen(
-          article: articles[index],
-        ),
-      ),
-    );
-    print(res);
+  @override
+  void initState() {
+    super.initState();
+    _controller = EasyRefreshController();
   }
 
   @override
@@ -41,20 +31,46 @@ class _SecondState extends State<Second> {
       appBar: AppBar(
         title: new Text('第二个页面'),
       ),
-      body: new Center(
-        child: new ListView.builder(
-          itemCount: articles.length,
-          itemBuilder: (BuildContext context, int index) {
-            var item = articles[index];
-            return ListTile(
-              title: new Text(item.title),
-              subtitle: new Text(item.content),
-              onTap: () {
-                onTapItem(context, index);
-              },
-            );
-          },
+      body: EasyRefresh.custom(
+        enableControlFinishRefresh: false,
+        enableControlFinishLoad: true,
+        controller: _controller,
+        header: PhoenixHeader(),
+        footer: MaterialFooter(
+          backgroundColor: Colors.cyan,
         ),
+        onRefresh: () async {
+          await Future.delayed(Duration(seconds: 2), () {
+            print('onRefresh');
+            setState(() {
+              _count = 20;
+            });
+            _controller.resetLoadState();
+          });
+        },
+        onLoad: () async {
+          await Future.delayed(Duration(seconds: 2), () {
+            print('onLoad');
+            setState(() {
+              _count += 10;
+            });
+            _controller.finishLoad(noMore: _count >= 40);
+          });
+        },
+        slivers: <Widget>[
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) => Container(
+                height: 60.0,
+                color: index % 2 == 0 ? Colors.white : Colors.grey[100],
+                child: new Center(
+                  child: new Text('$index'),
+                ),
+              ),
+              childCount: _count,
+            ),
+          ),
+        ],
       ),
     );
   }
