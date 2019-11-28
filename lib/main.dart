@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
+import 'package:flutter_base/blocs/user_bloc.dart';
 import 'package:flutter_base/themes/index.dart' as prefix0;
 import 'blocs/bloc_index.dart';
 
@@ -9,7 +10,6 @@ import 'package:flutter_base/routers/routers.dart';
 import 'package:flutter_base/ui/pages/root.dart';
 import 'package:flutter_base/ui/pages/users/collection.dart';
 import 'package:flutter_base/ui/pages/users/login_page.dart';
-
 
 void main() => runApp(BlocProvider(
       bloc: ApplicationBloc(),
@@ -56,19 +56,14 @@ class _MainAppState extends State<MainApp> {
       theme: new ThemeData(
         primaryColor: prefix0.AppColours.app_primary,
         backgroundColor: prefix0.AppColours.app_background,
-        textTheme: TextTheme(
-          body1: TextStyle(
-              // color: Color(ZJColors.accentColor),
-              // fontSize: ZJFonts.body1,
-              ),
-        ),
-        // iconTheme: IconThemeData(
-        //     color: Color(ZJColors.primaryColor), size: IconSize.large),
       ),
       home: new Scaffold(
         body: new Center(
           // child: new Root(),
-          child: new LoginPage(),
+          child: new BlocProvider(
+            bloc: new UserBloc(),
+            child: new LoginPage(),
+          ),
         ),
       ),
       debugShowCheckedModeBanner: true,

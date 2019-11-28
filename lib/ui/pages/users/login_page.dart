@@ -1,5 +1,10 @@
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base/blocs/bloc_provider.dart';
+import 'package:flutter_base/blocs/user_bloc.dart';
+import 'package:flutter_base/routers/application.dart';
 import 'package:flutter_base/themes/index.dart';
+import 'package:flutter_base/routers/routers.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -30,7 +35,11 @@ class _LoginPageState extends State<LoginPage> {
 
   void _login() {
     _formKey.currentState.save();
-    print('~~~~$_username~~~$_password~~~~~');
+    UserBloc userBloc = BlocProvider.of<UserBloc>(context);
+    userBloc.login(username: _username, password: _password);
+    userBloc.userStream.listen((data) {
+      Application.router.navigateTo(context, Routes.root, transition: TransitionType.fadeIn);
+    });
   }
 
   void _showPassWord() {

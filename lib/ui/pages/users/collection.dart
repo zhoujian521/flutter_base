@@ -16,7 +16,7 @@ class _CollectionState extends State<Collection> {
 
     return new Scaffold(
       appBar: AppBar(
-        title: new Text('我的收藏'),
+        title: new Text('user'),
       ),
       body: new ListView(
         children: <Widget>[

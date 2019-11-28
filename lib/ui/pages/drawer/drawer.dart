@@ -2,7 +2,6 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base/routers/application.dart';
 import 'package:flutter_base/routers/routers.dart';
-import 'package:flutter_base/data/model/user.dart';
 
 class Drawer extends StatefulWidget {
   @override
@@ -31,8 +30,7 @@ class _DrawerState extends State<Drawer> {
     //   return Collection();
     // }));
     // pushNamed
-    Navigator.pushNamed(context, '/collection',
-        arguments: User(name: "zhoujain", email: "403887191@qq.com"));
+    Navigator.pushNamed(context, '/collection');
   }
 
   void _logout(BuildContext context) => showDialog(
@@ -42,7 +40,7 @@ class _DrawerState extends State<Drawer> {
           actions: <Widget>[
             FlatButton(
               child: new Text('确认'),
-              onPressed: () => print('确认'),
+              onPressed: () => Application.router.navigateTo(context, Routes.login, transition: TransitionType.fadeIn),
             ),
             FlatButton(
               child: new Text('取消'),
