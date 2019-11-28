@@ -8,6 +8,7 @@ import 'package:flutter_base/routers/routers.dart';
 
 import 'package:flutter_base/ui/pages/root.dart';
 import 'package:flutter_base/ui/pages/users/collection.dart';
+import 'package:flutter_base/ui/pages/users/login_page.dart';
 
 
 void main() => runApp(BlocProvider(
@@ -66,7 +67,8 @@ class _MainAppState extends State<MainApp> {
       ),
       home: new Scaffold(
         body: new Center(
-          child: new Root(),
+          // child: new Root(),
+          child: new LoginPage(),
         ),
       ),
       debugShowCheckedModeBanner: true,

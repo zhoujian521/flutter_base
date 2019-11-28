@@ -16,11 +16,13 @@ class _DrawerState extends State<Drawer> {
       TextStyle(fontSize: 16.0, fontWeight: FontWeight.w300);
 
   void onTapError(BuildContext context) {
-    Application.router.navigateTo(context, Routes.error404, transition: TransitionType.native);
+    Application.router.navigateTo(context, Routes.error404,
+        transition: TransitionType.native);
   }
 
   void onTapSearch(BuildContext context) {
-    Application.router.navigateTo(context, Routes.search, transition: TransitionType.native);
+    Application.router
+        .navigateTo(context, Routes.search, transition: TransitionType.native);
   }
 
   void onTapCollection(BuildContext context) {
@@ -32,6 +34,23 @@ class _DrawerState extends State<Drawer> {
     Navigator.pushNamed(context, '/collection',
         arguments: User(name: "zhoujain", email: "403887191@qq.com"));
   }
+
+  void _logout(BuildContext context) => showDialog(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: new Text('确认退出登录?'),
+          actions: <Widget>[
+            FlatButton(
+              child: new Text('确认'),
+              onPressed: () => print('确认'),
+            ),
+            FlatButton(
+              child: new Text('取消'),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+          ],
+        ),
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -85,9 +104,7 @@ class _DrawerState extends State<Drawer> {
             ListTile(
               leading: Icon(Icons.exit_to_app, size: 27.0),
               title: new Text('退出登陆', style: textStyle),
-              onTap: () {
-                print('退出登陆');
-              },
+              onTap: () => _logout(context),
             )
           ],
         ),
