@@ -30,6 +30,7 @@ class _ThirdState extends State<Third> {
     final DataBloc dataBloc = BlocProvider.of<DataBloc>(context);
     return new Scaffold(
       appBar: AppBar(
+        leading: Container(child: null),
         title: new Text('第三个页面'),
       ),
       body: new StreamBuilder(

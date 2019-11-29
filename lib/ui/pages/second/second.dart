@@ -29,6 +29,7 @@ class _SecondState extends State<Second> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(
+        leading: Container(child: null),
         title: new Text('第二个页面'),
       ),
       body: EasyRefresh.custom(

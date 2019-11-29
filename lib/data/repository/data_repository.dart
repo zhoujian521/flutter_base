@@ -6,11 +6,12 @@ import 'package:flutter_base/data/model/project.dart';
 import 'package:flutter_base/data/model/base_resp.dart';
 
 class DataRepository {
-  static Future<List<Project>> getProjectList() async {
-    const url = Config.baseUrl + Api.PROJECT_LIST + '/1/json?cid=294';
+  static Future<List<Project>> getProjectList(int page) async {
+    String url =
+        Config.baseUrl + Api.PROJECT_LIST + '/' + '$page' + '/json?cid=294';
     var baseResp = await NetUtils.get(url);
     BaseResp res = BaseResp.fromJson(baseResp);
-    
+
     if (res.errorCode != Constant.status_success) {
       return new Future.error(res.errorMsg);
     }

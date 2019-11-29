@@ -11,6 +11,7 @@ class DataBloc implements BlocBase {
   Stream<List<Project>> get dataStream => _dataChannel.stream;
 
   List<Project> _array;
+  int _page = 1;
 
   @override
   void dispose() {
@@ -19,27 +20,33 @@ class DataBloc implements BlocBase {
 
   @override
   Future getData() {
-    return getProjectList();
+    return null;
   }
 
   @override
   Future onLoadMore() {
-    print('DataBloc~~~~~~~onLoadMore~~~~~~DataBloc');
-    return getData();
+    ++_page;
+    return getProjectList(_page);
   }
 
   @override
   Future onRefresh() {
-    print('DataBloc~~~~~~~onRefresh~~~~~~DataBloc');
-    _dataChannel.add(null);
-    return getData();
+    _page = 1;
+    return getProjectList(_page);
   }
 
-  Future getProjectList() {
-    return DataRepository.getProjectList().then((list) {
+  Future getProjectList(int page) {
+    print('~~~~getProjectList~~~~~$page');
+    if (page <= 1) page = 1;
+    return DataRepository.getProjectList(page).then((list) {
+      if (list == null || list.length == 0) {
+        --_page;
+        return null;
+      }
       if (_array == null) {
         _array = new List();
-      } else {
+      }
+      if (page == 1) {
         _array.clear();
       }
       _array.addAll(list);
