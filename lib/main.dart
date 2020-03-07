@@ -7,7 +7,6 @@ import 'blocs/bloc_index.dart';
 import 'package:flutter_base/routers/application.dart';
 import 'package:flutter_base/routers/routers.dart';
 
-import 'package:flutter_base/ui/pages/root.dart';
 import 'package:flutter_base/ui/pages/users/collection.dart';
 import 'package:flutter_base/ui/pages/users/login_page.dart';
 

@@ -6,7 +6,10 @@
 
 ## 最新动态
 
-### 🔥 `Flutter_Base 1.0` 发布
+>### 001:  🔥 `Flutter_Base 1.0` 发布
+
+>### 002: `Flutter` pub.dev 
+`https://pub.flutter-io.cn/`
 
 ## 醒目路径
 
