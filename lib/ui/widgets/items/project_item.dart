@@ -44,8 +44,8 @@ class ProjectItem extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  new Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                  new Flex(
+                    direction: Axis.horizontal,
                     children: <Widget>[
                       new FlatButton(
                         child: new Text('收藏'),
@@ -54,10 +54,12 @@ class ProjectItem extends StatelessWidget {
                         },
                       ),
                       new Text(model.author),
-                      new Text(
-                        '${model.publishTime}',
-                        overflow: TextOverflow.ellipsis,
-                      ),
+                      new Expanded(
+                        child: new Text(
+                          '${model.publishTime}',
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      )
                     ],
                   )
                 ],

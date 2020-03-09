@@ -35,7 +35,7 @@ class _ThirdState extends State<Third> {
       ),
       body: new StreamBuilder(
         stream: dataBloc.dataStream,
-        builder: (BuildContext context, AsyncSnapshot<List<Project>> snapshot) {
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
           return new RefreshIndicator(
             onRefresh: () {
               return dataBloc.onRefresh();

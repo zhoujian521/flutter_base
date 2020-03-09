@@ -4,11 +4,10 @@ import 'package:flutter_base/data/repository/data_repository.dart';
 import 'package:flutter_base/data/model/project.dart';
 
 class DataBloc implements BlocBase {
-  BehaviorSubject<List<Project>> _dataChannel =
-      BehaviorSubject<List<Project>>();
+  BehaviorSubject _dataChannel = BehaviorSubject();
 
-  Sink<List<Project>> get dataSink => _dataChannel.sink;
-  Stream<List<Project>> get dataStream => _dataChannel.stream;
+  Sink get dataSink => _dataChannel.sink;
+  Stream get dataStream => _dataChannel.stream;
 
   List<Project> _array;
   int _page = 1;

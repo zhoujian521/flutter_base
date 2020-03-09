@@ -58,7 +58,7 @@ class _HomeState extends State<Home> {
             ),
             StreamBuilder(
                 stream: bloc.configStream,
-                builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
                   return Text('$snapshot');
                 }),
           ],

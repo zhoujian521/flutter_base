@@ -12,10 +12,11 @@ Map<String, dynamic> headers = {
 };
 
 BaseOptions options = new BaseOptions(
-    baseUrl: Config.baseUrl,
-    connectTimeout: 5000,
-    receiveTimeout: 3000,
-    headers: headers);
+  baseUrl: Config.baseUrl,
+  connectTimeout: 5000,
+  receiveTimeout: 3000,
+  headers: headers,
+);
 
 var dio = new Dio(options);
 

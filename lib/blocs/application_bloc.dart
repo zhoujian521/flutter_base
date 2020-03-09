@@ -2,11 +2,11 @@ import 'bloc_provider.dart';
 import 'package:rxdart/rxdart.dart';
 
 class ApplicationBloc implements BlocBase {
-  BehaviorSubject<int> _appChannel = BehaviorSubject<int>();
+  BehaviorSubject _appChannel = BehaviorSubject();
 
-  Sink<int> get configSink => _appChannel.sink;
+  Sink get configSink => _appChannel.sink;
 
-  Stream<int> get configStream => _appChannel.stream;
+  Stream get configStream => _appChannel.stream;
 
   @override
   void dispose() {
